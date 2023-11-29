@@ -1,0 +1,22 @@
+{
+  "name": "bookstage-server",
+  "version": "1.0.0",
+  "description": "2023 Web-App Contest",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/app.js",
+    "build": "tsc -p .",
+    "dev": "nodemon --watch \"**.*.ts\" --exec \"ts-node\" app.ts"
+  },
+  "repository": "https://github.com/balhyo-younjisang/BookStage-Server",
+  "author": "Yunjisang, Leejungwook, Shingwonho",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.1",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2"
+  }
+}
