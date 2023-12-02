@@ -33,15 +33,6 @@ abstract class Repository<T> {
    */
   abstract deleteById(id: string): Promise<void | undefined>;
 
-  /** 데이터를 받아 DB Collection에 생성
-   * @author Yun jisang
-   * @Date 2023.12.01
-   * @abstract
-   * @param data DB에 생성할 데이터
-   * @returns Promise<void>
-   */
-  abstract create(data: T): Promise<void | undefined>;
-
   // 추가되는 인자들과 속성값을 만들 수 있도록
   [x: string]: any;
 }
