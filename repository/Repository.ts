@@ -22,7 +22,7 @@ abstract class Repository<T> {
    * @abstract
    * @returns Promise<T[]>
    */
-  abstract findAll(): Promise<T[] | undefined>;
+  abstract findAll(id?: string): Promise<T[] | undefined>;
 
   /** 문자열을 인자로 받아 해당 문자열을 가지고 있는 데이터를 DB Collection에서 찾아 데이터 삭제
    * @author Yun jisang
