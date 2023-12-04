@@ -56,6 +56,25 @@ class UserRepository extends Repository<IUserDocument> {
       if (err instanceof Error) throw err;
     }
   }
+
+  async updateById(email: string, bookName: string): Promise<void | undefined> {
+    try {
+      await DB.connect();
+      // @ts-ignore
+      const { finishRead } = await User.findOne({ email });
+
+      await User.findOneAndUpdate(
+        { email },
+        // @ts-ignore
+        {
+          finishRead: [...finishRead, { bookName, date: new Date() }],
+        },
+        { upsert: true }
+      );
+    } catch (err: unknown) {
+      if (err instanceof Error) throw err;
+    }
+  }
 }
 
 export default UserRepository;

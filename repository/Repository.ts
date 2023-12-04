@@ -33,6 +33,8 @@ abstract class Repository<T> {
    */
   abstract deleteById(id: string): Promise<void | undefined>;
 
+  abstract updateById(id: string, ...args: any[]): Promise<void | undefined>;
+
   // 추가되는 인자들과 속성값을 만들 수 있도록
   [x: string]: any;
 }

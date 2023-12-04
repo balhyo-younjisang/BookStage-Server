@@ -53,6 +53,10 @@ class BookRepository extends Repository<IBookDocument> {
   deleteById(id: string): Promise<void | undefined> {
     throw new Error("Method not implemented.");
   }
+
+  updateById(id: string): Promise<void | undefined> {
+    throw new Error("Method not implemented.");
+  }
 }
 
 export default BookRepository;

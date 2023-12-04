@@ -37,6 +37,7 @@ class UserController extends Controller<UserRepository> {
       const UserData: IUserDocument = {
         email,
         password: hashedPassword,
+        finishRead: [],
       };
       await this._repository.create(UserData);
       return res.status(200).json({ msg: "Success join" });
@@ -48,6 +49,19 @@ class UserController extends Controller<UserRepository> {
             return res.status(409).json({ msg: "Email is already exists" });
         }
       }
+    }
+  };
+
+  postFinishReadHandler = async (req: Request, res: Response) => {
+    try {
+      const { bookName } = req.body;
+      // @ts-ignore
+      const email = req.userEmail;
+
+      await this._repository.updateById(email!, bookName);
+      return res.status(200).json({ msg: "Success update" });
+    } catch (err: unknown) {
+      console.log(err);
     }
   };
 }

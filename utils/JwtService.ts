@@ -33,7 +33,7 @@ class JwtService {
    * @returns 사용자 요청 (Request)로부터 추출한 토큰
    */
   static extractTokenFromRequest(req: Request) {
-    const prefix = "Bearer";
+    const prefix = "Bearer ";
     const auth = req.headers.authorization;
     const token = auth?.includes(prefix) ? auth.split(prefix)[1] : auth;
 
