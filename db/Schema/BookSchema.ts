@@ -7,3 +7,8 @@ export interface IBookDocument {
   description: string; // 책 소개
   pubdate: Date; // 출간일
 }
+
+export interface IBook {
+  bookName: string;
+  date: Date;
+}

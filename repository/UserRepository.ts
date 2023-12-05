@@ -1,7 +1,5 @@
-import { MongoServerError } from "mongodb";
 import { DB } from "../db/Connection";
 import { IUserDocument, User } from "../db/Schema/UserSchema";
-import JwtService from "../utils/JwtService";
 import Repository from "./Repository";
 
 /** users collection에 직접적으로 접근하기 위한 객체
@@ -75,6 +73,17 @@ class UserRepository extends Repository<IUserDocument> {
       if (err instanceof Error) throw err;
     }
   }
+
+  findAllBooksData = async (email: string) => {
+    try {
+      await DB.connect();
+      const userReadBooks = await User.findOne({ email });
+
+      return userReadBooks;
+    } catch (err: unknown) {
+      if (err instanceof Error) throw err;
+    }
+  };
 }
 
 export default UserRepository;

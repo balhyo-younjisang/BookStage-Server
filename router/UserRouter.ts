@@ -18,6 +18,9 @@ class UserRouter extends Router<UserController> {
     this._router
       .route("/finish")
       .post(checkTokenFromRequest, this._controller.postFinishReadHandler);
+    this._router
+      .route("/summary")
+      .get(checkTokenFromRequest, this._controller.getSummaryHandler);
   }
 
   get router() {
