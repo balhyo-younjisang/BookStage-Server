@@ -24,6 +24,9 @@ class BookRouter extends Router<BookController> {
     this._router
       .route("/librarian")
       .get(this._controller.getLibrarianRecommendBooksHandler);
+    this._router
+      .route("/library")
+      .get(this._controller.getLibraryLocationHandler);
   }
 
   get router() {

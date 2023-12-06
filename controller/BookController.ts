@@ -63,6 +63,20 @@ class BookController extends Controller<BookRepository> {
 
     res.status(200).json({ msg: "Success get data", data: result });
   };
+
+  getLibraryLocationHandler = async (req: Request, res: Response) => {
+    const key = process.env.SEOUL_DATA_API_KEY;
+    const response = await axios.get(
+      `http://openapi.seoul.go.kr:8088/${key}/json/SeoulPublicLibraryInfo/1/5/`
+    );
+
+    res
+      .status(200)
+      .json({
+        msg: "Success get data",
+        data: response.data.SeoulPublicLibraryInfo.row,
+      });
+  };
 }
 
 export default BookController;
