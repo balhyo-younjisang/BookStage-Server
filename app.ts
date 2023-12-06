@@ -17,6 +17,7 @@ class ServerApplication {
 
     this.registerLoader();
     this._PORT = process.env.PORT!;
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     this.registerRoutes();
     this.registerMiddleware();
   }

@@ -35,4 +35,16 @@ export class DateService {
   getLastYear = () => {
     return new Date(new Date().setFullYear(this.year - 1));
   };
+
+  leftPad = (value: number) => {
+    return value >= 10 ? value : `0${value}`;
+  };
+
+  toStringByFormatting = (source: Date, delimiter = "-") => {
+    const year = source.getFullYear();
+    const month = this.leftPad(source.getMonth() + 1);
+    const day = this.leftPad(source.getDate());
+
+    return [year, month, day].join(delimiter);
+  };
 }

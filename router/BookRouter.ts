@@ -18,6 +18,12 @@ class BookRouter extends Router<BookController> {
     this._router
       .route("/search/all")
       .post(this._controller.postSearchBookAllHandler);
+    this._router
+      .route("/recommend")
+      .get(this._controller.getRecommendBooksHandler);
+    this._router
+      .route("/librarian")
+      .get(this._controller.getLibrarianRecommendBooksHandler);
   }
 
   get router() {
