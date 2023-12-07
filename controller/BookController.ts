@@ -42,7 +42,12 @@ class BookController extends Controller<BookRepository> {
       `http://data4library.kr/api/hotTrend?authKey=${process.env.LIBRARY_API_KEY}&searchDt=${todayFormatted}`
     );
 
-    console.log(response.data);
+    const result = convert.xml2js(response.data, {
+      compact: true,
+      captureSpacesBetweenElements: true,
+    });
+
+    res.status(200).json({ msg: "Success get Data", data: result });
   };
 
   /**
