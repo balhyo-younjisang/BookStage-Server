@@ -15,9 +15,7 @@ export class DB {
    * @returns Promise<Db>
    */
   static async connect(): Promise<Connection> {
-    const client = await mongoose.connect(
-      "mongodb://localhost:27017/BookStage"
-    );
+    const client = await mongoose.connect(process.env.DB_URL!);
     return client.connection;
   }
 }
