@@ -76,13 +76,20 @@ class UserController extends Controller<UserRepository> {
       const periodDate = date.getDateByPeriod(period!.toString());
 
       const booksData = await this._repository.findAllBooksData(email!);
-      const booksList: [string, IBook][] = Object.entries(
-        booksData!.finishRead
-      );
-      const filtering = booksList.filter((book) => book[1].date > periodDate!);
 
-      // todo : 통계 후 반환
-      res.status(200).json({ msg: "Success get data", data: filtering });
+      if (!!booksData!.finishRead) {
+        const booksList: [string, IBook][] = Object.entries(
+          booksData!.finishRead
+        );
+        const filtering = booksList.filter(
+          (book) => book[1].date > periodDate!
+        );
+
+        // todo : 통계 후 반환
+        res.status(200).json({ msg: "Success get data", data: filtering });
+      }
+
+      res.status(200).json({ msg: "Success get data", data: null });
     } catch (err: unknown) {
       console.log(err);
     }
