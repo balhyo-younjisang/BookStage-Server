@@ -40,8 +40,12 @@ class UserRepository extends Repository<IUserDocument> {
   };
 
   create = async (data: IUserDocument): Promise<void> => {
-    await DB.connect();
-    await User.create(data);
+    try {
+      await DB.connect();
+      await User.create({ ...data });
+    } catch (err: unknown) {
+      if (err instanceof Error) throw err;
+    }
   };
 
   async findByEmail(email: string): Promise<IUserDocument | undefined> {

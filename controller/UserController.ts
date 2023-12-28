@@ -41,6 +41,7 @@ class UserController extends Controller<UserRepository> {
         password: hashedPassword,
         finishRead: [],
       };
+
       await this._repository.create(UserData);
       return res.status(200).json({ msg: "Success join" });
     } catch (err: unknown) {
